@@ -4,6 +4,9 @@ import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
+
+import javax.print.attribute.standard.DateTimeAtCreation;
+
 @Table("transfer")
 public class Entity {
     @Getter
@@ -15,5 +18,7 @@ public class Entity {
     @Column("id")
     @Id
     String Code;
+    @Column("time")
+    DateTimeAtCreation time;
 }
 

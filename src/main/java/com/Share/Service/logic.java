@@ -8,18 +8,30 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class logic {
 
+public class logic {
+    private TransferRepository repo;
     @Autowired
     private TransferRepository repository;
 
-    public void push(String text) {
+    public String push(String text)
+    {
         String id = LocalTime.now().format(DateTimeFormatter.ofPattern("HHmmss"));
-
+        int c = 1;
+        String r = String.valueOf(c)+id;
         Entity entity = new Entity();
-        entity.setCode(id);
+        entity.setCode(r);
         entity.setText(text);
 
         repository.save(entity);
+        return r;
     }
+   public String reciever(String id)
+   {
+       Entity entity = new Entity();
+       entity ans= repo.findById(id) ;
+       return entity.getText().toString();
+       repo.deleteById(id);
+   }
+
 }

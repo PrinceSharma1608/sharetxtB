@@ -1,21 +1,20 @@
 package com.Share.Service;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+private logic logic;
 @RestController
 @RequestMapping("/transfer")
 public class Service {
     @PostMapping()
-    public void  data(String text)
+    public String data(String text)
     {
-        logic.push(text);
+       String code= logic.push(text);
+        return code;
     }
     @GetMapping()
-    public String recieve()
+    public String recieve(@RequestParam String i)
     {
-        return reciever();
+        return logic.reciever(i);
     }
 }
