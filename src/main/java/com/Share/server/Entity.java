@@ -1,24 +1,26 @@
 package com.Share.server;
-import lombok.*;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.relational.core.mapping.Column;
-import org.springframework.data.relational.core.mapping.Table;
+import jakarta.persistence.Column;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
 
-import javax.print.attribute.standard.DateTimeAtCreation;
+import java.time.LocalDateTime;
 
-@Table("transfer")
+@Getter
+@Setter
+@jakarta.persistence.Entity
+@Table(name = "transfer")
 public class Entity {
-    @Getter
-    @Setter
-    @Column("transfertext")
-    String text;
-    @Getter
-    @Setter
-    @Column("id")
-    @Id
-    String Code;
-    @Column("time")
-    DateTimeAtCreation time;
-}
 
+    @Id
+    @Column(name = "id")
+    private String Code;
+
+    @Column(name = "transfertext")
+    private String text;
+
+    @Column(name = "time")
+    private LocalDateTime time;
+}
